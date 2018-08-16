@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>人気記事検索アプリ</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    .root {
+      width: 600px;
+      margin: 50px auto;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="root">
+
+    <h1>人気記事検索をしよう</h1>
+    <br>
+
+    <!--エラー表示-->
+    {% if error %}
+      <p class="alert-danger">{{ error }}</p>
+      <br>
+    {% endif %}
+
+    <!--検索入力欄-->
+    <form action="/search">
+      <div class="form-group">
+        <input type="text" name="query" value="" placeholder="キーワードを入力してください" class="form-control">
+        <br>
+        <input type="submit" value="検索する" class="btn btn-primary">
+      </div>
+    </form>
+    <br>
+
+    <!--検索結果-->
+    {% if articles %}
+      <h2>検索結果</h2>
+      <ul>
+        {% for article in articles %}
+          <li><a href="{{ article[1] }}">{{ article[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>
