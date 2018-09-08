@@ -31,7 +31,7 @@ def search():
         return render_template("index.html", error="検索結果0件でした。")
 
     # 検索結果を表示する.
-    return render_template("index.html", articles=articles)
+    return render_template("index.html", query=query, articles=articles)
 
 
 def get_articles(query):

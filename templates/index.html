@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>人気記事検索アプリ</title>
+  <title>オススメ記事検索</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style>
     .root {
@@ -19,7 +19,7 @@
 
   <div class="root">
 
-    <h1>人気記事検索をしよう</h1>
+    <h1>オススメ記事検索をしよう</h1>
     <br>
 
     <!--エラー表示-->
@@ -31,7 +31,7 @@
     <!--検索入力欄-->
     <form action="/search">
       <div class="form-group">
-        <input type="text" name="query" value="" placeholder="キーワードを入力してください" class="form-control">
+        <input type="text" name="query" value="{% if query %}{{ query }}{% endif %}" placeholder="キーワードを入力してください" class="form-control">
         <br>
         <input type="submit" value="検索する" class="btn btn-primary">
       </div>
@@ -41,9 +41,9 @@
     <!--検索結果-->
     {% if articles %}
       <h2>検索結果</h2>
-      <ul>
+      <ul class="list-group">
         {% for article in articles %}
-          <li><a href="{{ article[1] }}">{{ article[0] }}</a></li>
+          <li class="list-group-item"><a href="{{ article[1] }}">{{ article[0] }}</a></li>
         {% endfor %}
       </ul>
     {% endif %}
