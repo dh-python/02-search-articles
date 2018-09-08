@@ -50,7 +50,7 @@ def get_articles(query):
         title = h3.find("a").string
         link = h3.find("a")["href"]
         if title.find(query) != -1:
-            articles.append([title, link])
+            articles.append({"title": title, "link": link})
 
     # 返却.
     return articles
